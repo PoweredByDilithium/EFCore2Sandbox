@@ -16,7 +16,7 @@ namespace ComputerInventory.Data {
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
       if (!optionsBuilder.IsConfigured) {
-        optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=BegEFCore2;Trusted_Connection=false;User ID=sa;Password= ");
+        optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=BegEFCore2;Trusted_Connection=true;User ID=DESKTOP-ROC8S98\Kyle;Password= ;");
       }
     }
 
@@ -63,7 +63,8 @@ namespace ComputerInventory.Data {
 
       modelBuilder.Entity<SupportTicket>(entity => {
         entity.Property(e => e.SupportTicketId).HasColumnName("SupportTicketID");
-        entity.Property(e => e.DateReported).HasColumnType("date"); entity.Property(e => e.DateResolved).HasColumnType("date");
+        entity.Property(e => e.DateReported).HasColumnType("date");
+        entity.Property(e => e.DateResolved).HasColumnType("date");
         entity.Property(e => e.IssueDescription).IsRequired().HasMaxLength(150).IsUnicode(false);
         entity.Property(e => e.IssueDetail).IsUnicode(false);
         entity.Property(e => e.MachineId).HasColumnName("MachineID"); entity.Property(e => e.TicketOpenedBy).IsRequired().HasMaxLength(50).IsUnicode(false);
